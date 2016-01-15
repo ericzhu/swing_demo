@@ -1,7 +1,5 @@
 package ca.el.training;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Arrays;
 
 import javax.swing.JTable;
@@ -9,6 +7,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
+
+import ca.el.component.CheckBoxPanelEditor;
+import ca.el.component.MyTableCellRenderer;
 
 public class TrainingCapacityTable extends JTable {
 
@@ -26,6 +27,16 @@ public class TrainingCapacityTable extends JTable {
 //			}
 //		});
 		
+		setFocusable(false);
+		
+//		setDefaultEditor(Boolean.class, null);
+//        super.updateUI();
+        setDefaultEditor(Boolean.class, new CheckBoxPanelEditor());
+        setDefaultRenderer(Boolean.class, new MyTableCellRenderer(this));
+		
+		
+//		setDefaultEditor(Boolean.class, new MyTableCellEditor(this));
+//		setDefaultRenderer(Boolean.class, new MyTableCellRenderer(this));
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
